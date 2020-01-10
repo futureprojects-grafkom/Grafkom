@@ -1,0 +1,288 @@
+<!-- Licensed under a BSD license. See license.html for license -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+    <title>Three.js - Load .OBJ and .MTL file - Fixed</title>
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=h46_OfpoK0Ikp65vYi2pd0ufyiVcbVJdwBA7iswMs1e-3H4ruor0igG7S-WDomjuCHRtAKmI6NvtEIFEKqQJrhf7OEv_x5pNhVocPlt0KqXchNa91pOAWJDWkaUwFIxGzc4rgG_-BNX0b98iS5j_ASC8TujB-6spBmswZ0tzAIdkCwG5Lu27W1ONo25VkcBo1-Fu8D-Mv87djjRXtCcGqYE-3xP_4vDqVIN0_wZFpgv9jPDQpyZ4BFCFo9Xr0dE5mubxh1HxQeEHtdF6agPphjsBR4shgp6QLRrBHQOECZ0t0Rd4a0usZlpt4ATs4DOChsTo8pe3vzjYzLTr_yoN1zZlmStyRR92faSmnnodW-viN4H-96RItsc5uKxXVPFcIdQRvGkGHpK0QAIbaPcZcMGu2UnPFdUz3fwWNus9ErmV3bSKzq_wnN0QH3vkWjPwKzHlTHP3aQ5ko9ghQSC4eGyNa-8uOD-tGKl_elMd950t_HYa78qT4dpi7Ts_3k3cYdbRHnvmlbdke2Tar3Ww2EaCf6I1iWaXnwUaoRFAhrx3Ptmd08jZQ_E7gve-X8swl6-YpI8IrTUmwcaYfcx4W9edlRYzU8wsw3-fVwZHb8wAZG8LyltYxoSD20dVP4QJ2TPkOCH1R02L2LbkuVcOoP2jIqyyhMp5eUJR5uVraY1yOelf2oNwRsTqPMGAbZ_kEKlEbRMV9Y_RDeBSAimrug6t5Co6nuOHAv3e-oQmN4VQ3_SmGyEBEpyx6m2bp1u7ptW6ovpQO778z36MV3dWXg1HuWqc_HDO5JkCntqFX8KWapZwC1sRfTun3Db3YhnbntFvhztDdRK2YF6lSyI2Xo4Ro0nFaNeX805_XG3k7uBdyaW4Q2xEXv8BpaQ586J8q2WQqbbJ8Gn0cN5GOYCe_tPNg7GFsB8UFHvAb6ocKGQJdlyvAa4rXVzTQHzY7t9xClTlzsUw7iWch6cff1x-l9pTp6_d52FX59XXA6Hv9p1rCMN7nMYV_nSFARXXJH2R7j4baNwqE6Vi4k32EsvMn7KDLRdI9MVn8uSC1mQF9uVUqWVtWSX1w6IkNDW8T_kzaT2vV-bo4cLez7cUVe6KVutZVyUq7VDHfWvBLpsmRbEFM1kV61S8DcXDNXa3B8iZbubv9WEF1d5UQEG4-rDO5dCYZ-ikKmxXaLW94gKyHdpV_8NU6zKkuM1Ij_0M_QIeCSR19UQcyLBYV8OPKDQMNg" nonce="2360b5f41a6be499f1cae4890a6e2961" charset="UTF-8"></script><style>
+    html, body {
+        margin: 0;
+        height: 100%;
+    }
+    #c {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+	#set {
+      position: absolute;
+      font-family: arial;
+      font-style: bold;
+      left: 0;
+      top: 75%;
+      width: 100%;
+      text-align: center;
+      font-size: 50px;
+    }
+    #audio {
+      position: absolute;
+      font-family: arial;
+      font-style: bold;
+      left: 0;
+      top: 84%;
+      width: 100%;
+      text-align: center;
+      font-size: 50px;
+    }
+    </style>
+  </head>
+  <body>
+    <canvas id="c">
+      <a href="#" class="replay-animation">Replay</a>
+    </canvas>
+    <div id="audio">
+            <audio controls>
+              <source src="gajah.mpeg" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+    </div>
+      <div class="content content--fixed">
+        <div id="set">
+          JERAPAH
+        </div>
+        <nav class="demo-1 demos">
+              <svg class="icon icon--keyboard"><use xlink:href="#icon-keyboard"></use></svg>
+              <a class="demo" href="index.html"><span>Virtual Zoo</span></a>
+              <a class="demo" href="jerapah.html"><span>Jerapah</span></a>
+              <a class="demo" href="gajah.html"><span>Gajah</span></a>
+              <a class="demo" href="kangguru.html"><span>Kangguru</span></a>
+              <a class="demo" href="serigala.html"><span>Serigala</span></a>
+              <a class="demo" href="pinguin.html"><span>Pinguin</span></a>
+        </nav>
+        <div class="debug">
+          <svg class="icon icon--debug" title="Toggle Debug Mode"><use xlink:href="#icon-debug"></use></svg>
+          <div class="timescale-wrap">
+            <label class="timescale-label">
+              <span class="timescale-title">Timescale:</span>
+              <span class="timescale-value">1.0</span>
+              <input class="timescale-range" type="range" min="0" max="3" step="0.1" value="1">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="loader"></div>
+    <script src="js/demo.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/OrbitControls.js"></script>
+    <script src="js/vendor/fast-simplex-noise.js"></script>
+    <script src="dist/js/demo-1/index.bundle.js"></script>
+    <script src="OrbitControls.js"></script>
+  <div style="text-align: right;position: fixed;z-index:9999999;bottom: 0;width: auto;right: 1%;cursor: pointer;line-height: 0;display:block !important;"><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png" alt="www.000webhost.com"></a></div><script>function getCookie(t){for(var e=t+"=",n=decodeURIComponent(document.cookie).split(";"),o=0;o<n.length;o++){for(var i=n[o];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(e))return i.substring(e.length,i.length)}return""}getCookie("hostinger")&&(document.cookie="hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;",location.reload());var wordpressAdminBody=document.getElementsByClassName("wp-admin")[0],notification=document.getElementsByClassName("notice notice-success is-dismissible"),hostingerLogo=document.getElementsByClassName("hlogo"),mainContent=document.getElementsByClassName("notice_content")[0];if(null!=wordpressAdminBody&&notification.length>0&&null!=mainContent){var googleFont=document.createElement("link");googleFontHref=document.createAttribute("href"),googleFontRel=document.createAttribute("rel"),googleFontHref.value="https://fonts.googleapis.com/css?family=Roboto:300,400,600",googleFontRel.value="stylesheet",googleFont.setAttributeNode(googleFontHref),googleFont.setAttributeNode(googleFontRel);var css="@media only screen and (max-width: 576px) {#main_content {max-width: 320px !important;} #main_content h1 {font-size: 30px !important;} #main_content h2 {font-size: 40px !important; margin: 20px 0 !important;} #main_content p {font-size: 14px !important;} #main_content .content-wrapper {text-align: center !important;}} @media only screen and (max-width: 781px) {#main_content {margin: auto; justify-content: center; max-width: 445px;}} @media only screen and (max-width: 1325px) {.web-hosting-90-off-image-wrapper {position: absolute; max-width: 95% !important;} .notice_content {justify-content: center;} .web-hosting-90-off-image {opacity: 0.3;}} @media only screen and (min-width: 769px) {.notice_content {justify-content: space-between;} #main_content {margin-left: 5%; max-width: 445px;} .web-hosting-90-off-image-wrapper {position: absolute; right: 0; display: flex; padding: 0 5%}} .web-hosting-90-off-image {max-width: 90%; margin-top: 20px;} .content-wrapper {z-index: 5} .notice_content {display: flex; align-items: center;} * {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .upgrade_button_red_sale{box-shadow: 0 2px 4px 0 rgba(255, 69, 70, 0.2); max-width: 350px; border: 0; border-radius: 3px; background-color: #ff4546 !important; padding: 15px 55px !important;  margin-bottom: 48px; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 600; color: #ffffff;} .upgrade_button_red_sale:hover{color: #ffffff !important; background: #d10303 !important;}",style=document.createElement("style"),sheet=window.document.styleSheets[0];style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName("head")[0].appendChild(style),document.getElementsByTagName("head")[0].appendChild(googleFont);var button=document.getElementsByClassName("upgrade_button_red")[0],link=button.parentElement;link.setAttribute("href","https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),link.innerHTML='<button class="upgrade_button_red_sale">TRANSFER NOW</button>',(notification=notification[0]).setAttribute("style","padding-bottom: 0; padding-top: 5px; background: url(https://cdn.000webhost.com/000webhost/promotions/cyber-monday-2019-bg.jpg); background-size: cover; background-repeat: no-repeat; color: #ffffff; border-color: #ff123a; border-width: 8px;"),notification.className="notice notice-error is-dismissible";var mainContentHolder=document.getElementById("main_content");mainContentHolder.setAttribute("style","padding: 0;"),hostingerLogo[0].remove();var h1Tag=notification.getElementsByTagName("H1")[0];h1Tag.className="000-h1",h1Tag.innerHTML="Cyber Monday Sale",h1Tag.setAttribute("style",'color: white;  margin-top: 48px; font-family: "Roboto", sans-serif; font-size: 48px; font-weight: 600;');var h2Tag=document.createElement("H2");h2Tag.innerHTML="Get 90% Off!",h2Tag.setAttribute("style",'color: white; margin: 45px 0; font-family: "Roboto", sans-serif; font-size: 80px; font-weight: 600;'),h1Tag.parentNode.insertBefore(h2Tag,h1Tag.nextSibling);var paragraph=notification.getElementsByTagName("p")[0];paragraph.innerHTML="Don’t miss the opportunity to enjoy up to <strong>4x WordPress Speed, Free SSL and all premium features</strong> available for a fraction of the price!",paragraph.setAttribute("style",'font-family: "Roboto", sans-serif; font-size: 18px; font-weight: 300;');var list=notification.getElementsByTagName("UL")[0];list.remove();var org_html=mainContent.innerHTML,new_html='<div class="content-wrapper">'+mainContent.innerHTML+'</div><div class="web-hosting-90-off-image-wrapper"><img class="web-hosting-90-off-image" src="https://cdn.000webhost.com/000webhost/promotions/cyber-monday-2019-img.png"></div>';mainContent.innerHTML=new_html;var saleImage=mainContent.getElementsByClassName("web-hosting-90-off-image")[0]}</script></body>
+<script type="module">
+import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/build/three.module.js';
+import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/controls/OrbitControls.js';
+import {OBJLoader2} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/loaders/OBJLoader2.js';
+import {MTLLoader} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/loaders/MTLLoader.js';
+import {MtlObjBridge} from 'https://threejsfundamentals.org/threejs/resources/threejs/r110/examples/jsm/loaders/obj2/bridge/MtlObjBridge.js';
+function main() {
+  const canvas = document.querySelector('#c');
+  const renderer = new THREE.WebGLRenderer({canvas});
+
+  const fov = 45;
+  const aspect = 2;  // the canvas default
+  const near = 0.1;
+  const far = 100;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  camera.position.set(0, 0, 20);
+
+  const controls = new OrbitControls(camera, canvas);
+  controls.target.set(0, 0, 0);
+  controls.update();
+
+  const scene = new THREE.Scene();
+  //scene.background = new THREE.Color('skyblue');
+  const loader = new THREE.TextureLoader();
+  const bgTexture = loader.load('african.jpg');
+  scene.background = bgTexture;
+
+  {
+    const planeSize = 40;
+
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load('grass.jpg');
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.magFilter = THREE.NearestFilter;
+    const repeats = planeSize / 2;
+    texture.repeat.set(repeats, repeats);
+
+    const planeGeo = new THREE.PlaneBufferGeometry(planeSize, planeSize);
+    const planeMat = new THREE.MeshPhongMaterial({
+      map: texture,
+      side: THREE.DoubleSide,
+    });
+    const mesh = new THREE.Mesh(planeGeo, planeMat);
+    mesh.rotation.x = Math.PI * -.5;
+    mesh.position.set(0,-3,0);
+    //scene.add(mesh);
+	//camera.lookAt(scene.position);
+  }
+
+  {
+    const skyColor = 0xB1E1FF;  // light blue
+    const groundColor = 0xB97A20;  // brownish orange
+    const intensity = 1;
+    const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+    scene.add(light);
+  }
+
+  {
+    const color = 0xFFFFFF;
+    const intensity = 1;
+    const light = new THREE.DirectionalLight(color, intensity);
+    light.position.set(5, 10, 2);
+    scene.add(light);
+    scene.add(light.target);
+  }
+
+  {
+    const mtlLoader = new MTLLoader();
+    mtlLoader.load('jerapah.mtl', (mtlParseResult) => {
+      const objLoader = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader.addMaterials(materials);
+
+      //materials.Material.side = THREE.DoubleSide;
+      
+      objLoader.load('jerapah.obj', (root) => {
+		root.position.set(0,-10,0)
+		root.scale.set(2.5,2.5,2.5)
+        scene.add(root);
+		camera.lookAt(root.position);
+		root.on('click', function(ev) {
+          blink(document.querySelector('#click'));
+          console.log('%c' + cube.name + '%c => click', 'color: #fff; background: #41b882; padding: 3px 4px;', 'color: #41b882; background: #fff;');
+        });
+		
+      });
+    });
+	
+	const mtlLoader2 = new MTLLoader();
+    mtlLoader2.load('gajah.mtl', (mtlParseResult) => {
+      const objLoader2 = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader2.addMaterials(materials);
+
+      //materials.Material.side = THREE.DoubleSide;
+      
+      objLoader2.load('gajah.obj', (root) => {
+		root.position.set(10,0,-2)
+        //scene.add(root);
+		
+      });
+    });
+	
+	const mtlLoader3 = new MTLLoader();
+    mtlLoader3.load('12271_Kangaroo_v1_L3.mtl', (mtlParseResult) => {
+      const objLoader3 = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader3.addMaterials(materials);
+
+      //materials.Material.side = THREE.DoubleSide;
+      
+      objLoader3.load('12271_Kangaroo_v1_L3.obj', (root) => {
+		root.position.set(-13,-3,7)
+		root.scale.set(0.02,0.02,0.02)
+		root.rotation.x = -90 *Math.PI/180;
+		root.rotation.z = -90 *Math.PI/180;
+        //scene.add(root);
+		
+      });
+    });
+	
+	const mtlLoader4 = new MTLLoader();
+    mtlLoader4.load('10055_Gray_Wolf_v1_L3.mtl', (mtlParseResult) => {
+      const objLoader4 = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader4.addMaterials(materials);
+
+      //materials.Material.side = THREE.DoubleSide;
+      
+      objLoader4.load('10055_Gray_Wolf_v1_L3.obj', (root) => {
+		root.position.set(-5,-3,-7)
+		root.scale.set(0.03,0.03,0.03)
+		root.rotation.x = -90 *Math.PI/180;
+        //scene.add(root);
+		
+      });
+    });
+	
+	const mtlLoader5 = new MTLLoader();
+    mtlLoader5.load('10033_Penguin_v1_iterations-2.mtl', (mtlParseResult) => {
+      const objLoader5 = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader5.addMaterials(materials);
+
+      //materials.Material.side = THREE.DoubleSide;
+      
+      objLoader5.load('10033_Penguin_v1_iterations-2.obj', (root) => {
+		root.position.set(-4,-2.5,-5)
+		root.scale.set(0.02,0.02,0.02)
+		//root.rotation.x = -90 *Math.PI/180;
+		root.rotation.z = -180 *Math.PI/180;
+		root.rotation.y = -90 *Math.PI/180;
+        //scene.add(root);
+		
+      });
+    });
+	
+	const mtlLoader6 = new MTLLoader();
+    mtlLoader6.load('Cst_300.mtl', (mtlParseResult) => {
+      const objLoader6 = new OBJLoader2();
+      const materials =  MtlObjBridge.addMaterialsFromMtlLoader(mtlParseResult);
+      objLoader5.addMaterials(materials);
+
+      //materials.Material.side = THREE.DoubleSide;
+      
+      objLoader6.load('Cst_300.obj', (root) => {
+		root.position.set(0,-3,7)
+		//root.scale.set(0.03,0.03,0.03)
+		//root.rotation.x = -90 *Math.PI/180;
+        //scene.add(root);
+		
+      });
+    });
+  }
+
+  function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+      renderer.setSize(width, height, false);
+    }
+    return needResize;
+  }
+
+  function render() {
+
+    if (resizeRendererToDisplaySize(renderer)) {
+      const canvas = renderer.domElement;
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+    }
+
+    renderer.render(scene, camera);
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+}
+
+main();
+</script>
+</html>
